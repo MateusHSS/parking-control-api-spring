@@ -1,5 +1,7 @@
 package com.api.parkingcontrol.services;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -31,5 +33,9 @@ public class ParkingSpotService {
 
   public boolean existsByLicensePlateCar(String licensePlateCar) {
     return parkingSpotRepository.existsByLicensePlateCar(licensePlateCar);
+  }
+
+  public List<ParkingSpotModel> findAll() {
+    return parkingSpotRepository.findAll();
   }
 }
