@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.api.parkingcontrol.models.ParkingSpotModel;
@@ -37,8 +39,8 @@ public class ParkingSpotService {
     return parkingSpotRepository.existsByLicensePlateCar(licensePlateCar);
   }
 
-  public List<ParkingSpotModel> findAll() {
-    return parkingSpotRepository.findAll();
+  public Page<ParkingSpotModel> findAll(Pageable pageable) {
+    return parkingSpotRepository.findAll(pageable);
   }
 
   public Optional<ParkingSpotModel> findById(UUID id) {
